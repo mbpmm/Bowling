@@ -16,6 +16,7 @@ public class canaletas : MonoBehaviour
             bola.transform.position = script.initPos;
             script.rig.velocity=Vector3.zero ;
             script.rig.angularVelocity = Vector3.zero;
+            script.ballReleased = false;
         }
     }
 }

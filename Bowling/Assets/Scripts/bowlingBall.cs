@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class bowlingBall : MonoBehaviour
 {
     public float velocidad;
     public float force;
-    private bool ballReleased;
+    public bool ballReleased;
     public int intentos;
+    public Text tirosText;
     public Transform pinos;
     public Vector3 initPos;
     public Rigidbody rig;
@@ -22,6 +24,7 @@ public class bowlingBall : MonoBehaviour
         ballReleased = false;
         limL = -1.790f;
         limR = 1.8189f;
+        tirosText.text = "TIROS: " + intentos.ToString();
     }
 
     // Update is called once per frame
@@ -30,7 +33,7 @@ public class bowlingBall : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        if (ballReleased==false)
+        if (!ballReleased)
         {
             transform.position = new Vector3(transform.position.x + horizontal * velocidad * Time.deltaTime, transform.position.y, transform.position.z);
             if (transform.position.x<limL)
@@ -60,5 +63,7 @@ public class bowlingBall : MonoBehaviour
             rig.AddForce(dir * force);
             ballReleased = true;
         }
+
+        tirosText.text = "TIROS: " + intentos.ToString();
     }
 }
