@@ -8,10 +8,12 @@ public class camara : MonoBehaviour
     Vector3 initialPos;
     public Vector3 offset;
     public Vector3 offsetRot;
+    public float camLim;
     // Start is called before the first frame update
     void Start()
     {
         initialPos = transform.position;
+        camLim = 1.0f;
     }
 
     // Update is called once per frame
@@ -19,7 +21,7 @@ public class camara : MonoBehaviour
     {
         transform.position = target.position + offset;
         transform.eulerAngles = offsetRot;
-        if (transform.position.z>1.0f)
+        if (transform.position.z>camLim)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, 1.0f);
         }
