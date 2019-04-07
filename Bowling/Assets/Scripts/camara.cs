@@ -23,7 +23,7 @@ public class camara : MonoBehaviour
         transform.eulerAngles = offsetRot;
         if (transform.position.z>camLim)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, 1.0f);
+            transform.position = new Vector3(transform.position.x, transform.position.y, camLim);
         }
     }
 }

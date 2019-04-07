@@ -15,10 +15,12 @@ public class bowlingBall : MonoBehaviour
     public Rigidbody rig;
     private float limL;
     private float limR;
+    private float maxPower;
 
     // Start is called before the first frame update
     void Start()
     {
+        maxPower = 6000.0f;
         rig = GetComponent<Rigidbody>();
         initPos = transform.position;
         ballReleased = false;
@@ -49,11 +51,15 @@ public class bowlingBall : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            force += Time.deltaTime*1000;
+            force += Time.deltaTime*2000;
+            if (force>maxPower)
+            {
+                force = maxPower;
+            }
         }
         else if(force>0)
         {
-            force-= Time.deltaTime*1000;
+            force-= Time.deltaTime*10000;
         }
 
         Vector3 dir = new Vector3(0, 0, 1);
@@ -63,6 +69,11 @@ public class bowlingBall : MonoBehaviour
             rig.AddForce(dir * force);
             ballReleased = true;
         }
+
+        //if (ballReleased && rig.velocity == Vector3.zero)
+        //{
+        //    intentos--;
+        //}
 
         tirosText.text = "TIROS: " + intentos.ToString();
     }
