@@ -126,8 +126,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14700539}
   serializedVersion: 2
-  m_Mass: 0.25
-  m_Drag: 0
+  m_Mass: 0.53
+  m_Drag: 0.11
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -302,8 +302,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80955776}
   serializedVersion: 2
-  m_Mass: 0.25
-  m_Drag: 0
+  m_Mass: 0.53
+  m_Drag: 0.11
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -452,8 +452,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242196490}
   serializedVersion: 2
-  m_Mass: 0.25
-  m_Drag: 0
+  m_Mass: 0.53
+  m_Drag: 0.11
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 411789385}
   - component: {fileID: 411789384}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Pista
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 483964744}
   - component: {fileID: 483964749}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Bola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -580,7 +580,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483964743}
   serializedVersion: 2
-  m_Mass: 0.78
+  m_Mass: 7.21
   m_Drag: 0.008
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -618,7 +618,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6ba08f1004ff33b458e57d4fd80ed103, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -674,7 +674,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 1.03
   force: 0
+  intentos: 3
   pinos: {fileID: 400000, guid: 1d82f759e41796c4fa2c10ab53cb0ab1, type: 3}
+  initPos: {x: 0, y: 0, z: 0}
 --- !u!1 &520525289
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +688,7 @@ GameObject:
   - component: {fileID: 520525292}
   - component: {fileID: 520525291}
   - component: {fileID: 520525290}
+  - component: {fileID: 520525293}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -757,6 +760,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &520525293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520525289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9cf21139262a624dad9af7addeb1bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 483964748}
+  offset: {x: 0, y: 2.26, z: -3.47}
+  offsetRot: {x: 21.82, y: 0, z: 0}
 --- !u!1001 &553323649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -842,8 +860,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557848580}
   serializedVersion: 2
-  m_Mass: 0.25
-  m_Drag: 0
+  m_Mass: 0.53
+  m_Drag: 0.11
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -935,8 +953,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917959144}
   serializedVersion: 2
-  m_Mass: 0.25
-  m_Drag: 0
+  m_Mass: 0.53
+  m_Drag: 0.11
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -985,6 +1003,7 @@ GameObject:
   - component: {fileID: 1215414125}
   - component: {fileID: 1215414124}
   - component: {fileID: 1215414123}
+  - component: {fileID: 1215414126}
   m_Layer: 0
   m_Name: pPlane2 (1)
   m_TagString: Untagged
@@ -1065,6 +1084,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215414121}
   m_Mesh: {fileID: 4300000, guid: 22118952a781beb458ec442565f8c7e2, type: 3}
+--- !u!114 &1215414126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215414121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a2bf4f09cd4ea42b5defb5ca304593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bola: {fileID: 483964743}
 --- !u!1 &1227349686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1111,7 @@ GameObject:
   - component: {fileID: 1227349688}
   - component: {fileID: 1227349687}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Piso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1259,8 +1291,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287900591}
   serializedVersion: 2
-  m_Mass: 0.25
-  m_Drag: 0
+  m_Mass: 0.53
+  m_Drag: 0.11
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1438,6 +1470,7 @@ GameObject:
   - component: {fileID: 1431947875}
   - component: {fileID: 1430816931}
   - component: {fileID: 1433015906}
+  - component: {fileID: 1433015908}
   m_Layer: 0
   m_Name: pPlane2
   m_TagString: Untagged
@@ -1475,6 +1508,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1433015908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433015905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a2bf4f09cd4ea42b5defb5ca304593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bola: {fileID: 483964743}
 --- !u!4 &1433242177
 Transform:
   m_ObjectHideFlags: 0
@@ -1590,8 +1636,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719241672}
   serializedVersion: 2
-  m_Mass: 0.25
-  m_Drag: 0
+  m_Mass: 0.53
+  m_Drag: 0.11
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1626,8 +1672,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761085004}
   serializedVersion: 2
-  m_Mass: 0.25
-  m_Drag: 0
+  m_Mass: 0.53
+  m_Drag: 0.11
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1719,8 +1765,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896614061}
   serializedVersion: 2
-  m_Mass: 0.25
-  m_Drag: 0
+  m_Mass: 0.53
+  m_Drag: 0.11
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1755,8 +1801,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910215140}
   serializedVersion: 2
-  m_Mass: 0.25
-  m_Drag: 0
+  m_Mass: 0.53
+  m_Drag: 0.11
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
