@@ -25,6 +25,7 @@ public class pinos : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             script.pinosCaidos++;
+            script.puntaje += 10.0f;
         }
     }
 

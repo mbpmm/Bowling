@@ -11,6 +11,7 @@ public class bowlingBall : MonoBehaviour
     public float force;
     public int intentos;
     public Text tirosText;
+    public Text puntajeText;
     public Text winText;
     public Text loseText;
     [HideInInspector]
@@ -19,6 +20,8 @@ public class bowlingBall : MonoBehaviour
     public Vector3 initPos;
     [HideInInspector]
     public Rigidbody rig;
+    [HideInInspector]
+    public float puntaje;
     public float timer;
     public float timerText;
     public bool reloadDelay;
@@ -42,6 +45,7 @@ public class bowlingBall : MonoBehaviour
         tirosText.text = "TIROS: " + intentos.ToString();
         winText.text = "GANASTE!!!";
         loseText.text = "PERDISTE :(";
+        puntajeText.text = "PUNTOS: " + puntaje.ToString();
         winText.gameObject.SetActive(false);
         loseText.gameObject.SetActive(false);
         timer = 0;
@@ -56,6 +60,7 @@ public class bowlingBall : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
+        //limites a izquierda y derecha
         if (!ballReleased)
         {
             transform.position = new Vector3(transform.position.x + horizontal * velocidad * Time.deltaTime, transform.position.y, transform.position.z);
@@ -69,7 +74,6 @@ public class bowlingBall : MonoBehaviour
             }
         }
         
-
         if (Input.GetKey(KeyCode.Space)&&!ballReleased)
         {
             force += Time.deltaTime*3000;
@@ -92,6 +96,7 @@ public class bowlingBall : MonoBehaviour
             ballReleased = true;
         }
 
+        //timer para el turno
         if (onTrigger)
         {
             timer += Time.deltaTime;
@@ -111,19 +116,24 @@ public class bowlingBall : MonoBehaviour
             reloadDelay = true;
         }
 
+        //timer para el reload de la escena
         if (reloadDelay)
         {
             timerText += Time.deltaTime;
         }
 
+        //actualizacion de textos
         tirosText.text = "TIROS: " + intentos.ToString();
+        puntajeText.text = "PUNTOS: " + puntaje.ToString();
 
+        //condicion de derrota y victoria
         if (intentos>=0&&pinosCaidos==10)
         {
             winText.gameObject.SetActive(true);
             if (timerText>3.0f)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                puntaje = 0;
             }
         }
         if (intentos==0&&pinosCaidos!=10)
@@ -132,6 +142,7 @@ public class bowlingBall : MonoBehaviour
             if (timerText > 3.0f)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                puntaje = 0;
             }
         }
     }

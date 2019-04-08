@@ -8,6 +8,5 @@ public class triggerCol : MonoBehaviour
     {
         bowlingBall script = other.gameObject.GetComponent<bowlingBall>();
         script.onTrigger = true;
-           
     }
 }

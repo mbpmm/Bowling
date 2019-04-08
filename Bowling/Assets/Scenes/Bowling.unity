@@ -1005,12 +1005,16 @@ MonoBehaviour:
   force: 0
   intentos: 3
   tirosText: {fileID: 1683494398}
+  puntajeText: {fileID: 1969818624}
   winText: {fileID: 1828497261}
   loseText: {fileID: 1466854229}
   ballReleased: 0
   initPos: {x: 0, y: 0, z: 0}
   rig: {fileID: 0}
+  puntaje: 0
   timer: 0
+  timerText: 0
+  reloadDelay: 0
   onTrigger: 0
   timeLimit: 0
 --- !u!1 &520525289
@@ -1143,7 +1147,7 @@ RectTransform:
   m_Children:
   - {fileID: 2142588984}
   m_Father: {fileID: 1740781983}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2129,7 +2133,7 @@ RectTransform:
   m_LocalScale: {x: 1.4807, y: 1.4807, z: 1.4807}
   m_Children: []
   m_Father: {fileID: 1740781983}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2247,7 +2251,7 @@ GameObject:
   - component: {fileID: 1683494399}
   - component: {fileID: 1683494398}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Tiros
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2470,6 +2474,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1683494397}
+  - {fileID: 1969818623}
   - {fileID: 529522132}
   - {fileID: 1828497260}
   - {fileID: 1466854228}
@@ -2646,7 +2651,7 @@ RectTransform:
   m_LocalScale: {x: 1.4941, y: 1.4941, z: 1.4941}
   m_Children: []
   m_Father: {fileID: 1740781983}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2823,6 +2828,85 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.59, y: 0.59, z: 0.5}
   m_Center: {x: -0.0030378327, y: 0, z: 0.6012034}
+--- !u!1 &1969818622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1969818623}
+  - component: {fileID: 1969818625}
+  - component: {fileID: 1969818624}
+  m_Layer: 5
+  m_Name: Puntaje
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1969818623
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969818622}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1740781983}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 20, y: -90}
+  m_SizeDelta: {x: 264, y: 71.5}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &1969818624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969818622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8558495, g: 1, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 32
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1969818625
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969818622}
+  m_CullTransparentMesh: 0
 --- !u!1 &2142588983
 GameObject:
   m_ObjectHideFlags: 0
