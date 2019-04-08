@@ -7,27 +7,38 @@ public class bowlingBall : MonoBehaviour
 {
     public float velocidad;
     public float force;
-    public bool ballReleased;
     public int intentos;
     public Text tirosText;
-    public Transform pinos;
+    [HideInInspector]
+    public bool ballReleased;
+    [HideInInspector]
     public Vector3 initPos;
+    [HideInInspector]
     public Rigidbody rig;
+    public float timer;
+    public bool onTrigger;
+    public float timeLimit;
     private float limL;
     private float limR;
     private float maxPower;
 
+
+    
     // Start is called before the first frame update
     void Start()
     {
+        timeLimit = 5.0f;
         maxPower = 6000.0f;
         rig = GetComponent<Rigidbody>();
         initPos = transform.position;
         ballReleased = false;
+        onTrigger = false;
         limL = -1.790f;
         limR = 1.8189f;
         tirosText.text = "TIROS: " + intentos.ToString();
+        timer = 0;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -70,11 +81,24 @@ public class bowlingBall : MonoBehaviour
             ballReleased = true;
         }
 
-        //if (ballReleased && rig.velocity == Vector3.zero)
-        //{
-        //    intentos--;
-        //}
+        if (onTrigger)
+        {
+            timer += Time.deltaTime;
+        }
+
+        if (timer>timeLimit)
+        {
+            intentos--;
+            timer = 0.0f;
+            onTrigger = false;
+            transform.position = initPos;
+            rig.velocity = Vector3.zero;
+            rig.angularVelocity = Vector3.zero;
+            ballReleased = false;
+        }
 
         tirosText.text = "TIROS: " + intentos.ToString();
     }
+
+    
 }
