@@ -7,13 +7,7 @@ public class powerBar : MonoBehaviour
 {
     public Slider slider;
     public GameObject bola;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         bola = GameObject.Find("Bola");

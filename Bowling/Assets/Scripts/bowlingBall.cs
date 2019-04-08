@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class bowlingBall : MonoBehaviour
 {
+    public float pinosCaidos;
     public float velocidad;
     public float force;
     public int intentos;
     public Text tirosText;
+    public Text winText;
+    public Text loseText;
     [HideInInspector]
     public bool ballReleased;
     [HideInInspector]
@@ -36,7 +39,12 @@ public class bowlingBall : MonoBehaviour
         limL = -1.790f;
         limR = 1.8189f;
         tirosText.text = "TIROS: " + intentos.ToString();
+        winText.text = "GANASTE!!!";
+        loseText.text = "PERDISTE :(";
+        winText.gameObject.SetActive(false);
+        loseText.gameObject.SetActive(false);
         timer = 0;
+        pinosCaidos = 0;
     }
 
 
@@ -62,7 +70,7 @@ public class bowlingBall : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            force += Time.deltaTime*2000;
+            force += Time.deltaTime*3000;
             if (force>maxPower)
             {
                 force = maxPower;
@@ -98,6 +106,15 @@ public class bowlingBall : MonoBehaviour
         }
 
         tirosText.text = "TIROS: " + intentos.ToString();
+
+        if (intentos>0&&pinosCaidos==10)
+        {
+            winText.gameObject.SetActive(true);
+        }
+        if (intentos==0)
+        {
+            loseText.gameObject.SetActive(true);
+        }
     }
 
     
