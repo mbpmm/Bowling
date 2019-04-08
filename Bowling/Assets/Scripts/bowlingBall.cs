@@ -70,7 +70,7 @@ public class bowlingBall : MonoBehaviour
         }
         
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space)&&!ballReleased)
         {
             force += Time.deltaTime*3000;
             if (force>maxPower)
@@ -81,6 +81,7 @@ public class bowlingBall : MonoBehaviour
         else if(force>0)
         {
             force-= Time.deltaTime*10000;
+            
         }
 
         Vector3 dir = new Vector3(0, 0, 1);
@@ -105,6 +106,7 @@ public class bowlingBall : MonoBehaviour
             transform.position = initPos;
             rig.velocity = Vector3.zero;
             rig.angularVelocity = Vector3.zero;
+            force = 0.0f;
             ballReleased = false;
             reloadDelay = true;
         }
@@ -116,7 +118,7 @@ public class bowlingBall : MonoBehaviour
 
         tirosText.text = "TIROS: " + intentos.ToString();
 
-        if (intentos>0&&pinosCaidos==10)
+        if (intentos>=0&&pinosCaidos==10)
         {
             winText.gameObject.SetActive(true);
             if (timerText>3.0f)

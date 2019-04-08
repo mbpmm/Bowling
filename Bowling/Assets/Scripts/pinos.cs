@@ -21,7 +21,7 @@ public class pinos : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-        if (timer > 4.0f)
+        if (timer > 3.0f)
         {
             this.gameObject.SetActive(false);
             script.pinosCaidos++;
@@ -33,7 +33,6 @@ public class pinos : MonoBehaviour
         if (other.gameObject.name == "Pista" || other.gameObject.name == "Piso")
         {
             estaCaido = true;
-            
         }
     }
 }
