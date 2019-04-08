@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class bowlingBall : MonoBehaviour
@@ -19,13 +20,13 @@ public class bowlingBall : MonoBehaviour
     [HideInInspector]
     public Rigidbody rig;
     public float timer;
+    public float timerText;
+    public bool reloadDelay;
     public bool onTrigger;
     public float timeLimit;
     private float limL;
     private float limR;
     private float maxPower;
-
-
     
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,7 @@ public class bowlingBall : MonoBehaviour
         loseText.gameObject.SetActive(false);
         timer = 0;
         pinosCaidos = 0;
+        timerText = 0.0f;
     }
 
 
@@ -92,6 +94,7 @@ public class bowlingBall : MonoBehaviour
         if (onTrigger)
         {
             timer += Time.deltaTime;
+            timerText = 0.0f;
         }
 
         if (timer>timeLimit)
@@ -103,6 +106,12 @@ public class bowlingBall : MonoBehaviour
             rig.velocity = Vector3.zero;
             rig.angularVelocity = Vector3.zero;
             ballReleased = false;
+            reloadDelay = true;
+        }
+
+        if (reloadDelay)
+        {
+            timerText += Time.deltaTime;
         }
 
         tirosText.text = "TIROS: " + intentos.ToString();
@@ -110,10 +119,18 @@ public class bowlingBall : MonoBehaviour
         if (intentos>0&&pinosCaidos==10)
         {
             winText.gameObject.SetActive(true);
+            if (timerText>3.0f)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
-        if (intentos==0)
+        if (intentos==0&&pinosCaidos!=10)
         {
             loseText.gameObject.SetActive(true);
+            if (timerText > 3.0f)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 
