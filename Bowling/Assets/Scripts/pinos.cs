@@ -6,9 +6,13 @@ public class pinos : MonoBehaviour
 {
     public GameObject bola;
     public float timer;
+    private float timerLim;
+    private float puntos;
     public bool estaCaido;
     void Start()
     {
+        puntos = 10.0f;
+        timerLim = 3.0f;
         timer = 0;
         estaCaido = false;
     }
@@ -21,11 +25,11 @@ public class pinos : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-        if (timer > 3.0f)
+        if (timer > timerLim)
         {
             this.gameObject.SetActive(false);
             script.pinosCaidos++;
-            script.puntaje += 10.0f;
+            script.puntaje += puntos;
         }
     }
 

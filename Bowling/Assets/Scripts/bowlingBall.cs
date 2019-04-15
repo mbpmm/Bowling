@@ -30,10 +30,18 @@ public class bowlingBall : MonoBehaviour
     private float limL;
     private float limR;
     private float maxPower;
-    
+    private float forceMult;
+    private float forceMultDecrease;
+    private int cantPinos;
+    private float winLoseDelay;
+
     // Start is called before the first frame update
     void Start()
     {
+        winLoseDelay = 3.0f;
+        cantPinos = 10;
+        forceMult = 3000.0f;
+        forceMultDecrease = 10000.0f;
         timeLimit = 5.0f;
         maxPower = 6000.0f;
         rig = GetComponent<Rigidbody>();
@@ -76,7 +84,7 @@ public class bowlingBall : MonoBehaviour
         
         if (Input.GetKey(KeyCode.Space)&&!ballReleased)
         {
-            force += Time.deltaTime*3000;
+            force += Time.deltaTime*forceMult;
             if (force>maxPower)
             {
                 force = maxPower;
@@ -84,7 +92,7 @@ public class bowlingBall : MonoBehaviour
         }
         else if(force>0)
         {
-            force-= Time.deltaTime*10000;
+            force-= Time.deltaTime* forceMultDecrease;
             
         }
 
@@ -127,19 +135,19 @@ public class bowlingBall : MonoBehaviour
         puntajeText.text = "PUNTOS: " + puntaje.ToString();
 
         //condicion de derrota y victoria
-        if (intentos>=0&&pinosCaidos==10)
+        if (intentos>=0&&pinosCaidos== cantPinos)
         {
             winText.gameObject.SetActive(true);
-            if (timerText>3.0f)
+            if (timerText> winLoseDelay)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 puntaje = 0;
             }
         }
-        if (intentos==0&&pinosCaidos!=10)
+        if (intentos==0&&pinosCaidos!=cantPinos)
         {
             loseText.gameObject.SetActive(true);
-            if (timerText > 3.0f)
+            if (timerText > winLoseDelay)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 puntaje = 0;
