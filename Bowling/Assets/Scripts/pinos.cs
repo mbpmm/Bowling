@@ -9,6 +9,7 @@ public class pinos : MonoBehaviour
     private float timerLim;
     private float puntos;
     public bool estaCaido;
+
     void Start()
     {
         puntos = 10.0f;

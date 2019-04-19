@@ -27,6 +27,7 @@ public class bowlingBall : MonoBehaviour
     public bool reloadDelay;
     public bool onTrigger;
     public float timeLimit;
+
     private float limL;
     private float limR;
     private float maxPower;
