@@ -6,14 +6,9 @@ using UnityEngine;
 
 public class bowlingBall : MonoBehaviour
 {
-    public float pinosCaidos;
+    public GameObject gameMan;
     public float velocidad;
     public float force;
-    public int intentos;
-    //public Text tirosText;
-    //public Text puntajeText;
-    //public Text winText;
-    //public Text loseText;
     [HideInInspector]
     public bool ballReleased;
     [HideInInspector]
@@ -21,7 +16,6 @@ public class bowlingBall : MonoBehaviour
     [HideInInspector]
     public Rigidbody rig;
     [HideInInspector]
-    public float puntaje;
     public float timer;
     public float timerText;
     public bool reloadDelay;
@@ -33,14 +27,11 @@ public class bowlingBall : MonoBehaviour
     private float maxPower;
     private float forceMult;
     private float forceMultDecrease;
-    private int cantPinos;
-    private float winLoseDelay;
 
     // Start is called before the first frame update
     void Start()
     {
-        winLoseDelay = 3.0f;
-        cantPinos = 10;
+        gameMan = GameObject.Find("GameManager");
         forceMult = 3000.0f;
         forceMultDecrease = 10000.0f;
         timeLimit = 5.0f;
@@ -51,14 +42,7 @@ public class bowlingBall : MonoBehaviour
         onTrigger = false;
         limL = -1.790f;
         limR = 1.8189f;
-        //tirosText.text = "TIROS: " + intentos.ToString();
-        //winText.text = "GANASTE!!!";
-        //loseText.text = "PERDISTE :(";
-        //puntajeText.text = "PUNTOS: " + puntaje.ToString();
-        //winText.gameObject.SetActive(false);
-        //loseText.gameObject.SetActive(false);
         timer = 0;
-        pinosCaidos = 0;
         timerText = 0.0f;
     }
 
@@ -114,7 +98,7 @@ public class bowlingBall : MonoBehaviour
 
         if (timer>timeLimit)
         {
-            intentos--;
+            gameMan.GetComponent<GameManager>().intentos--;
             timer = 0.0f;
             onTrigger = false;
             transform.position = initPos;
@@ -129,30 +113,6 @@ public class bowlingBall : MonoBehaviour
         if (reloadDelay)
         {
             timerText += Time.deltaTime;
-        }
-
-        //actualizacion de textos
-        tirosText.text = "TIROS: " + intentos.ToString();
-        puntajeText.text = "PUNTOS: " + puntaje.ToString();
-
-        //condicion de derrota y victoria
-        if (intentos>=0&&pinosCaidos== cantPinos)
-        {
-            winText.gameObject.SetActive(true);
-            if (timerText> winLoseDelay)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                puntaje = 0;
-            }
-        }
-        if (intentos==0&&pinosCaidos!=cantPinos)
-        {
-            loseText.gameObject.SetActive(true);
-            if (timerText > winLoseDelay)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                puntaje = 0;
-            }
         }
     }
 

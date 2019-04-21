@@ -6,6 +6,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public Slider slider;
+    public GameObject gameManager;
     public GameObject bola;
     public Text tirosText;
     public Text puntajeText;
@@ -14,17 +15,32 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager");
         bola = GameObject.Find("Bola");
-        tirosText.text = "TIROS: " + bola.GetComponent<bowlingBall>().intentos.ToString();
+        tirosText.text = "TIROS: " + gameManager.GetComponent<GameManager>().intentos.ToString();
         winText.text = "GANASTE!!!";
         loseText.text = "PERDISTE :(";
-        puntajeText.text = "PUNTOS: " + bola.GetComponent<bowlingBall>().puntaje.ToString();
+        puntajeText.text = "PUNTOS: " + gameManager.GetComponent<GameManager>().puntaje.ToString();
         winText.gameObject.SetActive(false);
         loseText.gameObject.SetActive(false);
+        slider.value = bola.GetComponent<bowlingBall>().force;
     }
     void Update()
     {
-        bowlingBall script = bola.GetComponent<bowlingBall>();
-        slider.value = script.force;
+        slider.value = bola.GetComponent<bowlingBall>().force;
+
+        tirosText.text = "TIROS: " + gameManager.GetComponent<GameManager>().intentos.ToString();
+        puntajeText.text = "PUNTOS: " + gameManager.GetComponent<GameManager>().puntaje.ToString();
+
+        if (gameManager.GetComponent<GameManager>().intentos >= 0 &&
+            gameManager.GetComponent<GameManager>().pinosCaidos == gameManager.GetComponent<GameManager>().cantPinos)
+        {
+            winText.gameObject.SetActive(true);
+        }
+        if (gameManager.GetComponent<GameManager>().intentos == 0 && 
+            gameManager.GetComponent<GameManager>().pinosCaidos != gameManager.GetComponent<GameManager>().cantPinos)
+        {
+            loseText.gameObject.SetActive(true);
+        }
     }
 }

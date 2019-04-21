@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04cafdf6ca78444093c27ec458d04e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bola: {fileID: 483964743}
+  gameManager: {fileID: 372490558}
   timer: 0
   estaCaido: 0
 --- !u!65 &14700546
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04cafdf6ca78444093c27ec458d04e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bola: {fileID: 483964743}
+  gameManager: {fileID: 372490558}
   timer: 0
   estaCaido: 0
 --- !u!65 &80955783
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04cafdf6ca78444093c27ec458d04e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bola: {fileID: 483964743}
+  gameManager: {fileID: 372490558}
   timer: 0
   estaCaido: 0
 --- !u!65 &242196497
@@ -804,6 +804,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b69a1ca4152d0846a91640063f8b888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bola: {fileID: 483964743}
+  puntaje: 0
+  cantPinos: 0
+  intentos: 0
+  pinosCaidos: 0
 --- !u!4 &372490560
 Transform:
   m_ObjectHideFlags: 0
@@ -1030,18 +1035,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c3829082e8e6640b56c358793e90c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pinosCaidos: 0
+  gameMan: {fileID: 372490558}
   velocidad: 4.59
   force: 0
-  intentos: 3
-  tirosText: {fileID: 1683494398}
-  puntajeText: {fileID: 1969818624}
-  winText: {fileID: 1828497261}
-  loseText: {fileID: 1466854229}
   ballReleased: 0
   initPos: {x: 0, y: 0, z: 0}
   rig: {fileID: 0}
-  puntaje: 0
   timer: 0
   timerText: 0
   reloadDelay: 0
@@ -1326,7 +1325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04cafdf6ca78444093c27ec458d04e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bola: {fileID: 483964743}
+  gameManager: {fileID: 372490558}
   timer: 0
   estaCaido: 0
 --- !u!65 &557848587
@@ -1447,7 +1446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04cafdf6ca78444093c27ec458d04e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bola: {fileID: 483964743}
+  gameManager: {fileID: 372490558}
   timer: 0
   estaCaido: 0
 --- !u!65 &917959151
@@ -1770,7 +1769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04cafdf6ca78444093c27ec458d04e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bola: {fileID: 483964743}
+  gameManager: {fileID: 372490558}
   timer: 0
   estaCaido: 0
 --- !u!65 &1287900598
@@ -2287,7 +2286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04cafdf6ca78444093c27ec458d04e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bola: {fileID: 483964743}
+  gameManager: {fileID: 372490558}
   timer: 0
   estaCaido: 0
 --- !u!65 &1719241679
@@ -2420,7 +2419,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 2142588985}
+  gameManager: {fileID: 372490558}
   bola: {fileID: 483964743}
+  tirosText: {fileID: 1683494398}
+  puntajeText: {fileID: 1969818624}
+  winText: {fileID: 1828497261}
+  loseText: {fileID: 1466854229}
 --- !u!1 &1761085004 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 13752a669b5387f429052ada0c67c789,
@@ -2469,7 +2473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04cafdf6ca78444093c27ec458d04e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bola: {fileID: 483964743}
+  gameManager: {fileID: 372490558}
   timer: 0
   estaCaido: 0
 --- !u!65 &1761085011
@@ -2669,7 +2673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04cafdf6ca78444093c27ec458d04e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bola: {fileID: 483964743}
+  gameManager: {fileID: 372490558}
   timer: 0
   estaCaido: 0
 --- !u!65 &1896614068
@@ -2733,7 +2737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04cafdf6ca78444093c27ec458d04e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bola: {fileID: 483964743}
+  gameManager: {fileID: 372490558}
   timer: 0
   estaCaido: 0
 --- !u!65 &1910215147

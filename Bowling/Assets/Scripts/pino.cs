@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class pino : MonoBehaviour
 {
-    public GameObject bola;
+    public GameObject gameManager;
     public float timer;
+    public bool estaCaido;
+
     private float timerLim;
     private float puntos;
-    public bool estaCaido;
 
     void Start()
     {
@@ -16,12 +17,12 @@ public class pino : MonoBehaviour
         timerLim = 3.0f;
         timer = 0;
         estaCaido = false;
+        gameManager = GameObject.Find("GameManager");
     }
 
     // Update is called once per frame
     void Update()
     {
-        bowlingBall script = bola.gameObject.GetComponent<bowlingBall>();
         if (estaCaido)
         {
             timer += Time.deltaTime;
@@ -29,8 +30,8 @@ public class pino : MonoBehaviour
         if (timer > timerLim)
         {
             this.gameObject.SetActive(false);
-            script.pinosCaidos++;
-            script.puntaje += puntos;
+            gameManager.GetComponent<GameManager>().pinosCaidos++;
+            gameManager.GetComponent<GameManager>().puntaje += puntos;
         }
     }
 
