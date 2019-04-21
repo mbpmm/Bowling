@@ -10,10 +10,10 @@ public class bowlingBall : MonoBehaviour
     public float velocidad;
     public float force;
     public int intentos;
-    public Text tirosText;
-    public Text puntajeText;
-    public Text winText;
-    public Text loseText;
+    //public Text tirosText;
+    //public Text puntajeText;
+    //public Text winText;
+    //public Text loseText;
     [HideInInspector]
     public bool ballReleased;
     [HideInInspector]
@@ -51,12 +51,12 @@ public class bowlingBall : MonoBehaviour
         onTrigger = false;
         limL = -1.790f;
         limR = 1.8189f;
-        tirosText.text = "TIROS: " + intentos.ToString();
-        winText.text = "GANASTE!!!";
-        loseText.text = "PERDISTE :(";
-        puntajeText.text = "PUNTOS: " + puntaje.ToString();
-        winText.gameObject.SetActive(false);
-        loseText.gameObject.SetActive(false);
+        //tirosText.text = "TIROS: " + intentos.ToString();
+        //winText.text = "GANASTE!!!";
+        //loseText.text = "PERDISTE :(";
+        //puntajeText.text = "PUNTOS: " + puntaje.ToString();
+        //winText.gameObject.SetActive(false);
+        //loseText.gameObject.SetActive(false);
         timer = 0;
         pinosCaidos = 0;
         timerText = 0.0f;
@@ -156,5 +156,8 @@ public class bowlingBall : MonoBehaviour
         }
     }
 
-    
+    void OnTriggerEnter(Collider other)
+    {
+        onTrigger = true;
+    }
 }

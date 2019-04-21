@@ -9,6 +9,7 @@ public class camara : MonoBehaviour
     public Vector3 offset;
     public Vector3 offsetRot;
     public float camLim;
+
     // Start is called before the first frame update
     void Start()
     {

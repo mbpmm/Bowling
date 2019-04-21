@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pinos : MonoBehaviour
+public class pino : MonoBehaviour
 {
     public GameObject bola;
     public float timer;
